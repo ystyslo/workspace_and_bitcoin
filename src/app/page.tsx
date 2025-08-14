@@ -3,7 +3,7 @@ import { navCards } from "@/data/navCards";
 
 export default function HomePage() {
   return (
-    <main className="flex-1 flex items-center justify-center px-6">
+    <main className="flex-1 flex min-h-screen items-center justify-center px-6 pb-30">
       <div className="max-w-2xl mx-auto text-center space-y-8">
         <div className="space-y-4">
           <h1 className="text-4xl font-bold text-white">Yurii Styslo</h1>
