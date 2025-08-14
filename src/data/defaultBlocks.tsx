@@ -1,4 +1,4 @@
-import { Block } from "@/app/types/Block";
+import { Block } from "@/types/Block";
 
 export const defaultBlocks: Block[] = Array.from({ length: 5 }, (_, i) => ({
   id: i + 1,

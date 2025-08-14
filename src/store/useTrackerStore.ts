@@ -1,4 +1,4 @@
-import { Transaction } from "@/app/types/Transaction";
+import { Transaction } from "@/types/Transaction";
 import { create } from "zustand";
 
 export interface TrackerState {

@@ -1,4 +1,4 @@
-import { Transaction } from "@/app/types/Transaction";
+import { Transaction } from "@/types/Transaction";
 
 export const formatBTC = (satoshi: number) => {
   return (satoshi / 100000000).toFixed(8);

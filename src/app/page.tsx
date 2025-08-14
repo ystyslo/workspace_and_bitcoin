@@ -1,4 +1,4 @@
-import NavCard from "./components/NavCard";
+import NavCard from "../components/ui/NavCard";
 import { navCards } from "@/data/navCards";
 
 export default function HomePage() {

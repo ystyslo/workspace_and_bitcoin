@@ -1,12 +1,11 @@
 "use client";
 
-import { Block, BlockChanges } from "@/app/types/Block";
-import { Button } from "@/components/ui/button";
-import { defaultBlocks } from "@/data/defaultBlocks";
-import { useBlocksStore } from "@/store/useBlocksStore";
-import { RefreshCcw, X } from "lucide-react";
 import React, { useEffect, useState } from "react";
+import { RefreshCcw, X } from "lucide-react";
 import { Rnd } from "react-rnd";
+
+import { useBlocksStore } from "@/store/useBlocksStore";
+import { Button } from "@/components/ui/button";
 
 export default function Blocks() {
   const {

@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { Block, BlockChanges } from "@/app/types/Block";
+import { Block, BlockChanges } from "@/types/Block";
 import { defaultBlocks } from "@/data/defaultBlocks";
 
 interface BlocksState {

@@ -1,14 +1,15 @@
 "use client";
 
 import { Bitcoin, Wifi, WifiOff } from "lucide-react";
-import BackBtn from "../components/ui/BackBtn";
 import { useTrackerStore } from "@/store/useTrackerStore";
 
 import { tabHeaders } from "@/data/tabHeaders";
-import { Button } from "@/components/ui/button";
 import { trackerControlBtns } from "@/data/trackerControlBtns";
 import { TransactionRow } from "./components/TransactionRow";
 import { MobileTransactionRow } from "./components/MobileTransactionRow";
+import { Button } from "@/components/ui/button";
+import BackBtn from "../../components/ui/BackBtn";
+import { useEffect, useState } from "react";
 
 export default function BitcoinTracker() {
   const {
@@ -21,6 +22,17 @@ export default function BitcoinTracker() {
   } = useTrackerStore();
 
   const state = useTrackerStore.getState();
+  const [isTablet, setIsTablet] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsTablet(window.innerWidth <= 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div className="min-h-screen bg-slate-900 p-4 md:p-6">
@@ -76,19 +88,24 @@ export default function BitcoinTracker() {
         </div>
 
         <div className="bg-slate-800/50 rounded-xl border border-slate-700 overflow-hidden">
-          <div className="hidden md:grid md:grid-cols-4 gap-4 p-4 bg-slate-700/50 border-b border-slate-600">
-            {tabHeaders.map((header) => (
-              <div key={header} className="text-sm font-medium text-slate-300">
-                {header}
-              </div>
-            ))}
-          </div>
-
-          <div className="md:hidden p-4 bg-slate-700/50 border-b border-slate-600">
-            <div className="text-sm font-medium text-slate-300">
-              Live Transactions ({transactions.length})
+          {!isTablet ? (
+            <div className="hidden md:grid md:grid-cols-4 gap-40 p-4 bg-slate-700/50 border-b border-slate-600">
+              {tabHeaders.map((header) => (
+                <div
+                  key={header}
+                  className="text-sm font-medium text-slate-300"
+                >
+                  {header}
+                </div>
+              ))}
             </div>
-          </div>
+          ) : (
+            <div className="md:hidden p-4 bg-slate-700/50 border-b border-slate-600">
+              <div className="text-sm font-medium text-slate-300">
+                Live Transactions ({transactions.length})
+              </div>
+            </div>
+          )}
 
           <div className="max-h-85 overflow-y-auto">
             {transactions.length === 0 ? (
@@ -104,8 +121,11 @@ export default function BitcoinTracker() {
               <>
                 {transactions.map((transaction) => (
                   <div key={transaction.hash}>
-                    <TransactionRow transaction={transaction} />
-                    <MobileTransactionRow transaction={transaction} />
+                    {!isTablet ? (
+                      <TransactionRow transaction={transaction} />
+                    ) : (
+                      <MobileTransactionRow transaction={transaction} />
+                    )}
                   </div>
                 ))}
               </>

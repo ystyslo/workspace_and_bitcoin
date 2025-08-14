@@ -1,4 +1,4 @@
-import { Transaction } from "@/app/types/Transaction";
+import { Transaction } from "@/types/Transaction";
 import {
   Popover,
   PopoverContent,
@@ -9,7 +9,7 @@ import {
   formatBTC,
   getFirstInput,
   getFirstOutput,
-} from "@/lib/transactionsFunc";
+} from "@/lib/transactionsFuncs";
 import { MoreHorizontal } from "lucide-react";
 
 interface MobileTransactionRowProps {
@@ -57,7 +57,7 @@ export const MobileTransactionRow = ({
   );
 
   return (
-    <div className="md:hidden flex items-center justify-between p-3 border-b border-slate-700">
+    <div className="flex items-center justify-between p-3 border-b border-slate-700">
       <div className="flex-1">
         <div className="text-amber-400 font-mono text-sm font-medium">
           {formatBTC(transaction.totalValue)} BTC
