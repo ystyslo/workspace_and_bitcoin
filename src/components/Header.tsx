@@ -1,19 +1,5 @@
-import { Code, Github, Linkedin, Mail } from "lucide-react";
-
-const links = [
-  {
-    href: "https://github.com/ystyslo",
-    icon: <Github className="w-5 h-5" />,
-  },
-  {
-    href: "https://www.linkedin.com/in/yurii-styslo-608800366/",
-    icon: <Linkedin className="w-5 h-5" />,
-  },
-  {
-    href: "mailto:yuriistyslo@gmail.com",
-    icon: <Mail className="w-5 h-5" />,
-  },
-];
+import { headerLinks } from "@/data/headerLinks";
+import { Code } from "lucide-react";
 
 export default function Header() {
   return (
@@ -29,7 +15,7 @@ export default function Header() {
         </div>
 
         <div className="flex gap-5">
-          {links.map((link) => (
+          {headerLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
