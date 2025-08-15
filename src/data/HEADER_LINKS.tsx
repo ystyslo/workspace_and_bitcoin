@@ -1,6 +1,6 @@
 import { Github, Linkedin, Mail } from "lucide-react";
 
-export const headerLinks = [
+export const HEADER_LINKS = [
   {
     href: "https://github.com/ystyslo",
     icon: <Github className="w-5 h-5" />,

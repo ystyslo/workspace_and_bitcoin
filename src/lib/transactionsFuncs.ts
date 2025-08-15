@@ -1,13 +1,19 @@
 import { Transaction } from "@/types/Transaction";
 
+const SATOSHI_PER_BTC = 100_000_000;
+const MAX_ADDRESS_LENGTH = 20;
+const SUBSTR_LENGTH = 8;
+
 export const formatBTC = (satoshi: number) => {
-  return (satoshi / 100000000).toFixed(8);
+  return (satoshi / SATOSHI_PER_BTC).toFixed(8);
 };
 
 export const formatAddress = (addr: string | null) => {
   if (!addr) return "N/A";
-  return addr.length > 20
-    ? `${addr.substring(0, 8)}...${addr.substring(addr.length - 8)}`
+  return addr.length > MAX_ADDRESS_LENGTH
+    ? `${addr.substring(0, SUBSTR_LENGTH)}...${addr.substring(
+        addr.length - SUBSTR_LENGTH
+      )}`
     : addr;
 };
 

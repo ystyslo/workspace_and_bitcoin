@@ -1,4 +1,4 @@
-import { headerLinks } from "@/data/headerLinks";
+import { HEADER_LINKS } from "@/data/HEADER_LINKS";
 import { Code } from "lucide-react";
 
 export default function Header() {
@@ -15,7 +15,7 @@ export default function Header() {
         </div>
 
         <div className="flex gap-5">
-          {headerLinks.map((link) => (
+          {HEADER_LINKS.map((link) => (
             <a
               key={link.href}
               href={link.href}

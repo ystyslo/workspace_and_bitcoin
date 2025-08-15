@@ -1,6 +1,6 @@
 import { Grid3X3, Bitcoin } from "lucide-react";
 
-export const navCards = [
+export const NAV_CARDS = [
   {
     title: "Interactive Workspace",
     description: "Draggable & Resizable Blocks",

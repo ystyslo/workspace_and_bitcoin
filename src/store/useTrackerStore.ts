@@ -11,6 +11,9 @@ export interface TrackerState {
   resetTransactions: () => void;
 }
 
+const TRANSACTIONS_LIMIT = 30;
+const SATOSHI_PER_BTC = 100_000_000;
+
 export const useTrackerStore = create<TrackerState>((set, get) => ({
   transactions: [],
   totalSum: 0,
@@ -54,8 +57,11 @@ export const useTrackerStore = create<TrackerState>((set, get) => ({
           };
 
           set((state) => ({
-            transactions: [transaction, ...state.transactions.slice(0, 49)],
-            totalSum: state.totalSum + transaction.totalValue / 100000000,
+            transactions: [
+              transaction,
+              ...state.transactions.slice(0, TRANSACTIONS_LIMIT - 1),
+            ],
+            totalSum: state.totalSum + transaction.totalValue / SATOSHI_PER_BTC,
           }));
         }
       } catch (error) {

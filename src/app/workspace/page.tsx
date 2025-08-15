@@ -1,4 +1,4 @@
-import BackBtn from "../../components/ui/BackBtn";
+import BackBtn from "../../components/shared/BackBtn";
 import Blocks from "./components/Blocks";
 
 export default function WorkspacePage() {

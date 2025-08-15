@@ -4,13 +4,9 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import {
-  formatAddress,
-  formatBTC,
-  getFirstInput,
-  getFirstOutput,
-} from "@/lib/transactionsFuncs";
+import { formatBTC } from "@/lib/transactionsFuncs";
 import { MoreHorizontal } from "lucide-react";
+import { AddrTooltip } from "./AddrTooltip";
 
 interface MobileTransactionRowProps {
   transaction: Transaction;
@@ -26,7 +22,7 @@ export const MobileTransactionRow = ({
           From
         </label>
         <p className="text-sm text-slate-200 font-mono break-all">
-          {formatAddress(getFirstInput(transaction))}
+          <AddrTooltip transaction={transaction} />
         </p>
       </div>
       <div>
@@ -34,7 +30,7 @@ export const MobileTransactionRow = ({
           To
         </label>
         <p className="text-sm text-slate-200 font-mono break-all">
-          {formatAddress(getFirstOutput(transaction))}
+          <AddrTooltip transaction={transaction} isInput={false} />
         </p>
       </div>
       <div>

@@ -3,12 +3,12 @@
 import { Bitcoin, Wifi, WifiOff } from "lucide-react";
 import { useTrackerStore } from "@/store/useTrackerStore";
 
-import { tabHeaders } from "@/data/tabHeaders";
-import { trackerControlBtns } from "@/data/trackerControlBtns";
+import { TAB_HEADERS } from "@/data/TAB_HEADERS";
+import { TRACKER_CNTRL_BTN } from "@/data/TRACKER_CNTRL_BTN";
 import { TransactionRow } from "./components/TransactionRow";
 import { MobileTransactionRow } from "./components/MobileTransactionRow";
 import { Button } from "@/components/ui/button";
-import BackBtn from "../../components/ui/BackBtn";
+import BackBtn from "../../components/shared/BackBtn";
 import { useEffect, useState } from "react";
 
 export default function BitcoinTracker() {
@@ -65,24 +65,29 @@ export default function BitcoinTracker() {
             </div>
 
             <div className="flex gap-3">
-              {trackerControlBtns.map((btn) => (
-                <Button
-                  key={btn.label}
-                  onClick={
-                    btn.action === "startTracking"
-                      ? startTracking
-                      : btn.action === "stopTracking"
-                      ? stopTracking
-                      : resetTransactions
-                  }
-                  size="lg"
-                  disabled={btn.disabledCondition(state)}
-                  className={`flex items-center gap-2 px-4 py-2 ${btn.className} disabled:bg-slate-600 disabled:text-slate-400 text-white rounded-lg transition-colors`}
-                >
-                  {btn.icon}
-                  <span className="hidden sm:flex">{btn.label}</span>
-                </Button>
-              ))}
+              {TRACKER_CNTRL_BTN.map((btn) => {
+                let action;
+                if (btn.action === "startTracking") {
+                  action = startTracking;
+                } else if (btn.action === "stopTracking") {
+                  action = stopTracking;
+                } else {
+                  action = resetTransactions;
+                }
+
+                return (
+                  <Button
+                    key={btn.label}
+                    onClick={action}
+                    size="lg"
+                    disabled={btn.disabledCondition(state)}
+                    className={`flex items-center gap-2 px-4 py-2 ${btn.className} disabled:bg-slate-600 disabled:text-slate-400 text-white rounded-lg transition-colors`}
+                  >
+                    {btn.icon}
+                    <span className="hidden sm:flex">{btn.label}</span>
+                  </Button>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -90,7 +95,7 @@ export default function BitcoinTracker() {
         <div className="bg-slate-800/50 rounded-xl border border-slate-700 overflow-hidden">
           {!isTablet ? (
             <div className="hidden md:grid md:grid-cols-4 gap-40 p-4 bg-slate-700/50 border-b border-slate-600">
-              {tabHeaders.map((header) => (
+              {TAB_HEADERS.map((header) => (
                 <div
                   key={header}
                   className="text-sm font-medium text-slate-300"

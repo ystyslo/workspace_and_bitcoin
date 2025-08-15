@@ -1,7 +1,7 @@
 import { TrackerState } from "@/store/useTrackerStore";
 import { Play, RotateCcw, Square } from "lucide-react";
 
-export const trackerControlBtns = [
+export const TRACKER_CNTRL_BTN = [
   {
     icon: <Play className="w-4 h-4" />,
     label: "Start",

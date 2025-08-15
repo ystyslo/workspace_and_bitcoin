@@ -1,5 +1,5 @@
-import NavCard from "../components/ui/NavCard";
-import { navCards } from "@/data/navCards";
+import NavCard from "../components/shared/NavCard";
+import { NAV_CARDS } from "@/data/NAV_CARDS";
 
 export default function HomePage() {
   return (
@@ -21,7 +21,7 @@ export default function HomePage() {
           </h2>
 
           <div className="grid gap-4 max-w-xl mx-auto">
-            {navCards.map((card) => (
+            {NAV_CARDS.map((card) => (
               <NavCard
                 key={card.title}
                 title={card.title}

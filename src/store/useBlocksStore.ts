@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { Block, BlockChanges } from "@/types/Block";
-import { defaultBlocks } from "@/data/defaultBlocks";
+import { DEFAULT_BLOCKS } from "@/data/DEFAULT_BLOCKS";
 
 interface BlocksState {
   blocks: Block[];
@@ -17,12 +17,12 @@ interface BlocksState {
   resetBlocks: () => void;
 }
 
-const initialZ = Object.fromEntries(defaultBlocks.map((b) => [b.id, 1]));
+const initialZ = Object.fromEntries(DEFAULT_BLOCKS.map((b) => [b.id, 1]));
 
 export const useBlocksStore = create<BlocksState>()(
   persist(
     (set, get) => ({
-      blocks: defaultBlocks,
+      blocks: DEFAULT_BLOCKS,
       activeId: null,
       zIndexes: initialZ,
       maxZ: 1,
@@ -47,7 +47,7 @@ export const useBlocksStore = create<BlocksState>()(
 
       resetBlocks: () =>
         set({
-          blocks: defaultBlocks,
+          blocks: DEFAULT_BLOCKS,
           activeId: null,
           zIndexes: initialZ,
           maxZ: 1,
